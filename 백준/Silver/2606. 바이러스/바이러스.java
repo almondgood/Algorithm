@@ -50,19 +50,19 @@ public class Main {
             arr[n1][n2] = arr[n2][n1] = 1;
         }
 
-        { // 인접 리스트 dfs
-            dfsList(1);
-            System.out.println(cnt);
-
-//            clear();
-        }
-
-//        { // 인접 행렬 dfs
-//            dfsArr(1);
+//        { // 인접 리스트 dfs
+//            dfsList(1);
 //            System.out.println(cnt);
 //
 //            clear();
 //        }
+
+        { // 인접 행렬 dfs
+            dfsArr(1);
+            System.out.println(cnt);
+
+            clear();
+        }
 //
 //        { // 인접 리스트 bfs
 //            bfsList(1);
@@ -80,32 +80,32 @@ public class Main {
     }
 
 
-    public static void dfsList(int start) {
-        if (list.get(start).isEmpty()) {
-            return;
-        }
-
-        for (int i = 0; i < list.get(start).size(); i++) {
-            int tmp = list.get(start).get(i);
-
-            if (isConnect[tmp]) continue;
-
-            isConnect[tmp] = true;
-            cnt++;
-            dfsList(tmp);
-        }
-    }
-
-//    public static void dfsArr(int start) {
+//    public static void dfsList(int start) {
+//        if (list.get(start).isEmpty()) {
+//            return;
+//        }
 //
-//        for (int i = 1; i < arr.length; i++) {
-//            if (arr[start][i] == 1 && !isConnect[i]) {
-//                isConnect[i] = true;
-//                cnt++;
-//                dfsArr(i);
-//            }
+//        for (int i = 0; i < list.get(start).size(); i++) {
+//            int tmp = list.get(start).get(i);
+//
+//            if (isConnect[tmp]) continue;
+//
+//            isConnect[tmp] = true;
+//            cnt++;
+//            dfsList(tmp);
 //        }
 //    }
+
+    public static void dfsArr(int start) {
+
+        for (int i = 1; i < arr.length; i++) {
+            if (arr[start][i] == 1 && !isConnect[i]) {
+                isConnect[i] = true;
+                cnt++;
+                dfsArr(i);
+            }
+        }
+    }
 //
 //    public static void bfsList(int start) {
 //        queue.add(start);
