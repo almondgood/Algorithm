@@ -57,19 +57,19 @@ public class Main {
 //            clear();
 //        }
 
-        { // 인접 행렬 dfs
-            dfsArr(1);
-            System.out.println(cnt);
-
-            clear();
-        }
-//
-//        { // 인접 리스트 bfs
-//            bfsList(1);
+//        { // 인접 행렬 dfs
+//            dfsArr(1);
 //            System.out.println(cnt);
 //
 //            clear();
 //        }
+//
+        { // 인접 리스트 bfs
+            bfsList(1);
+            System.out.println(cnt);
+
+            clear();
+        }
 //
 //        { // 인접 행렬 bfs
 //            bfsArr(1);
@@ -96,33 +96,33 @@ public class Main {
 //        }
 //    }
 
-    public static void dfsArr(int start) {
-
-        for (int i = 1; i < arr.length; i++) {
-            if (arr[start][i] == 1 && !isConnect[i]) {
-                isConnect[i] = true;
-                cnt++;
-                dfsArr(i);
-            }
-        }
-    }
+//    public static void dfsArr(int start) {
 //
-//    public static void bfsList(int start) {
-//        queue.add(start);
-//
-//        while(!queue.isEmpty()) {
-//            int node = queue.poll();
-//            for (int i = 0; i < list.get(node).size(); i++) {
-//                int num = list.get(node).get(i);
-//
-//                if (!isConnect[num]) {
-//                    isConnect[num] = true;
-//                    cnt++;
-//                    queue.add(num);
-//                }
+//        for (int i = 1; i < arr.length; i++) {
+//            if (arr[start][i] == 1 && !isConnect[i]) {
+//                isConnect[i] = true;
+//                cnt++;
+//                dfsArr(i);
 //            }
 //        }
 //    }
+//
+    public static void bfsList(int start) {
+        queue.add(start);
+
+        while(!queue.isEmpty()) {
+            int node = queue.poll();
+            for (int i = 0; i < list.get(node).size(); i++) {
+                int num = list.get(node).get(i);
+
+                if (!isConnect[num]) {
+                    isConnect[num] = true;
+                    cnt++;
+                    queue.add(num);
+                }
+            }
+        }
+    }
 //
 //    public static void bfsArr(int start) {
 //        queue.add(start);
