@@ -6,7 +6,7 @@ import java.util.Arrays;
 public class Main {
 
     static boolean end = false;
-    static long[] dpArr = new long[10000001];
+    static int[] dpArr = new int[10000001];
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,14 +25,14 @@ public class Main {
     }
 
 
-    public static long dp(int n) {
+    public static int dp(int n) {
         if (dpArr[n] < Integer.MAX_VALUE) {
             return dpArr[n];
         }
 
-        long sumA = Integer.MAX_VALUE;
-        long sumB = Integer.MAX_VALUE;
-        long sumC = Integer.MAX_VALUE;
+        int sumA = Integer.MAX_VALUE;
+        int sumB = Integer.MAX_VALUE;
+        int sumC = Integer.MAX_VALUE;
 
         if (n % 3 == 0) {
             sumA = dp(n / 3) + 1;
@@ -42,7 +42,7 @@ public class Main {
         }
         sumC = dp(n - 1) + 1;
 
-        long sum = Math.min(sumA, sumB);
+        int sum = Math.min(sumA, sumB);
         sum = Math.min(sum, sumC);
 
 
