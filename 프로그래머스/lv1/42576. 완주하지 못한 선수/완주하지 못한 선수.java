@@ -1,18 +1,13 @@
 import java.util.*;
 
 class Solution {
-    public String solution(String[] participant, String[] completion) {
+   public String solution(String[] participant, String[] completion) {
         String answer = "";
 
         HashMap<String, Integer> map = new HashMap<>();
 
         for (String s : completion) {
-            if (map.containsKey(s)) {
-                Integer num = map.get(s);
-                map.replace(s, num, num + 1);
-            } else {
-                 map.put(s, 1);
-            }
+            map.put(s, map.getOrDefault(s, 0) + 1);
         }
 
         for (String s : participant) {
@@ -20,10 +15,7 @@ class Solution {
                 return s;
             }
 
-            Integer num = map.get(s);
-            map.replace(s, num, num - 1);
-
-            if (num == 0) {
+            if (map.put(s, map.get(s) - 1) == 0) {
                 return s;
             }
         }
