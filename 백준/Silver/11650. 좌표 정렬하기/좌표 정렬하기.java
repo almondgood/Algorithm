@@ -1,39 +1,32 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) throws IOException
-    {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int n = Integer.parseInt(br.readLine());
+        int n = Integer.parseInt(st.nextToken());
 
-        Map<Integer, List<Integer>> map = new HashMap<>();
+        int[][] arr = new int[n][2];
         for (int i = 0; i < n; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-
-            if (!map.containsKey(x))
-                map.put(x, new ArrayList<>());
-
-            map.get(x).add(y);
+            st = new StringTokenizer(br.readLine());
+            arr[i][0] = Integer.parseInt(st.nextToken());
+            arr[i][1] = Integer.parseInt(st.nextToken());
         }
 
-        Integer[] keyArr = map.keySet().stream()
-                .sorted()
-                .toArray(Integer[]::new);
+        Arrays.sort(arr, (o1, o2) -> {
+            if (o1[0] == o2[0]) return o1[1] - o2[1];
+            else return o1[0] - o2[0];
+        });
 
-        for (Integer i : keyArr) {
-            List<Integer> list = map.get(i);
-            Collections.sort(list);
-
-            for (Integer val : list) {
-                sb.append(i).append(" ").append(val).append("\n");
-            }
+        for (int i = 0; i < n; i++) {
+            sb.append(arr[i][0]).append(" ")
+                    .append(arr[i][1]).append("\n");
         }
 
         System.out.println(sb);
