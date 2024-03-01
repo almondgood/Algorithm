@@ -1,22 +1,18 @@
 from sys import stdin
+from collections import Counter
 
 n = int(stdin.readline())
 
 numbers = []
-num_cnt = {}
 for i in range(n):
-    num = int(stdin.readline())
-    numbers.append(num)
-    
-    if num not in num_cnt:
-        num_cnt[num] = 0
-    num_cnt[num] += 1
-        
+    numbers.append(int(stdin.readline()))
+      
 numbers.sort()
-       
+
+counter = Counter(numbers)
 max_cnt = 0 
 mode = []
-for num, cnt in num_cnt.items():
+for num, cnt in counter.items():
     if cnt > max_cnt:
         max_cnt = cnt
         mode = []
