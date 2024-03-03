@@ -8,38 +8,20 @@ for _ in range(n):
 
 li.sort()
 
-s = sum(li)
-
 min = 0
-max = s // k + 1
+max = (sum(li) // k) + 1
 length = max // 2
 
-memo = {}
 while True:
-    cnt = 0
-    for i in li:
-        cnt += i // length
-        
-        
-    #print("cnt, length", cnt, length)
-    memo[length] = cnt
+    cnt = sum(i // length for i in li)
     
-    
-    
-    if cnt == k:
-        if length == max or (length + 1) in memo and (memo[length] < memo[length + 1]):
-            break
-    
-    
-    if cnt >= k:
+    if cnt >= k: 
         min = length + 1
-        length = (max + min) // 2
-    elif cnt < k:
+    elif cnt < k: 
         max = length - 1
-        length = (max + min) // 2 
         
+    length = (max + min) // 2
+    
     if max < min:
+        print(length)
         break
-        
-print(length)
-     
